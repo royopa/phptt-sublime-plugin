@@ -7,10 +7,6 @@ from os.path import expanduser
 
 class PhpttTestCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        sublime.active_window().run_command(
-            "show_panel", {"panel": "console", "toggle": True}
-        )
-
         file_name = self.view.file_name()
         if len(file_name) > 0:
             if not file_name.endswith('.phpt'):
@@ -18,17 +14,15 @@ class PhpttTestCommand(sublime_plugin.TextCommand):
                 return
             cmd = ['phptt', 'test', file_name]
             shell_command = ShellCommand()
-            print(shell_command.shell_out(cmd))
+            output = shell_command.shell_out(cmd)
+            print(output)
+            sublime.message_dialog(output)
         return True
 
 
 class PhpttLcovCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
-        sublime.active_window().run_command(
-            "show_panel", {"panel": "console", "toggle": True}
-        )
-
         file_name = self.view.file_name()
         if len(file_name) > 0:
             if not file_name.endswith('.phpt'):
@@ -36,7 +30,8 @@ class PhpttLcovCommand(sublime_plugin.TextCommand):
                 return
             cmd = ['phptt', 'lcov', file_name]
             shell_command = ShellCommand()
-            print(shell_command.shell_out(cmd))
+            output = shell_command.shell_out(cmd)
+            print(output)
         return True
 
 
