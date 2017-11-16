@@ -1,0 +1,11 @@
+[
+    { 
+        "caption": "PHP Test Tools", 
+        "id": "phptt",
+        "children":
+        [
+            { "caption": "Test file", "command": "phptt_test", "args": {} },
+            { "caption": "Generate LCOV", "command": "phptt_lcov", "args": {} },
+        ]
+    }
+]
